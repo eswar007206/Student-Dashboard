@@ -3,69 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard - Lecture Booking Portal</title>
-    <meta name="description" content="Browse and book seats for upcoming lectures at your university">
+    <meta name="description" content="Student Dashboard - View and book upcoming lectures with BookMyShow-style interface">
+    <title>Student Dashboard | Lecture Booking System</title>
     <link rel="stylesheet" href="student-dashboard.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container header-content">
-            <div class="logo-section">
-                <img id="gcu-logo" src="image.png" alt="Logo">
-                <h1 class="header-title">Student Dashboard</h1>
+        <div class="container">
+            <div class="header-content" style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <img id="logo-gcu" src="image.png" alt="" style="height: 40px;">
+                    <h1 class="header-title" style="margin: 0;">Student Dashboard</h1>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()" aria-label="Logout">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
             </div>
-            <button class="logout-btn" onclick="handleLogout()">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                    <polyline points="16 17 21 12 16 7"></polyline>
-                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                </svg>
-                Logout
-            </button>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Search Section -->
-            <div class="search-section">
+            <!-- Search and Filter Section -->
+            <div class="controls-section">
                 <div class="search-wrapper">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                    <input 
-                        type="text" 
-                        id="searchInput" 
-                        class="search-input" 
-                        placeholder="Search by course, program, or teacher..."
-                        oninput="handleSearch(this.value)"
-                    >
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="search-input" 
+                            placeholder="Search by course, program, or teacher..."
+                            oninput="handleSearch(this.value)"
+                            aria-label="Search lectures"
+                        />
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">Filter by Program</h3>
+                    <div class="filter-chips">
+                        <button class="chip chip-active" data-filter="all" onclick="handleFilter('all')">
+                            <span class="chip-text">All Programs</span>
+                        </button>
+                        <button class="chip" data-filter="Engineering" onclick="handleFilter('Engineering')">
+                            <span class="chip-text">Engineering</span>
+                        </button>
+                        <button class="chip" data-filter="Life Sciences" onclick="handleFilter('Life Sciences')">
+                            <span class="chip-text">Life Sciences</span>
+                        </button>
+                        <button class="chip" data-filter="Hotel Management" onclick="handleFilter('Hotel Management')">
+                            <span class="chip-text">Hotel Management</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Section Header -->
+            <!-- Section Title -->
             <div class="section-header">
-                <h2 class="section-title">Upcoming Lectures</h2>
-                <p class="section-subtitle">Book your seat for the lectures below</p>
-            </div>
-
-            <!-- Filter Chips -->
-            <div class="filter-chips" id="filterChips">
-                <button class="chip chip-active" data-filter="all" onclick="handleFilter('all')">All Lectures</button>
-                <button class="chip" data-filter="Computer Science" onclick="handleFilter('Computer Science')">Computer Science</button>
-                <button class="chip" data-filter="Artificial Intelligence" onclick="handleFilter('Artificial Intelligence')">AI</button>
-                <button class="chip" data-filter="Information Technology" onclick="handleFilter('Information Technology')">IT</button>
+                <h2 class="section-title"> Upcoming Lectures</h2>
+                <p class="section-subtitle">Select a lecture to view and book your seat</p>
             </div>
 
             <!-- Lectures Grid -->
             <div class="lectures-grid" id="lecturesGrid">
-                <!-- Lecture cards will be inserted here by JavaScript -->
+                <!-- Lecture cards will be dynamically inserted here -->
             </div>
 
             <!-- Empty State -->
@@ -74,21 +86,23 @@
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                <h3 class="empty-title">No lectures available right now</h3>
-                <p class="empty-text">Check back later or adjust your search filters</p>
+                <h3 class="empty-title">No lectures available right now.</h3>
+                <p class="empty-description">Check back later for upcoming lectures or try adjusting your filters.</p>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <img id="gcu-logo" src="image.png" alt="Logo">
-                <span class="footer-brand-text">Student Lecture Portal</span>
-            </div>
-            <div class="footer-info">
-                <p class="footer-text">© 2025 Garden City University.</p>
+        <div class="container">
+            <div class="footer-content" style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img id="logo-gcu" src="image.png" alt="" style="height: 32px;">
+                    <span class="footer-title" style="font-weight: 600;">Student Dashboard</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="footer-text">&copy; All rights reserved | Garden City University</span>
+                </div>
             </div>
         </div>
     </footer>
