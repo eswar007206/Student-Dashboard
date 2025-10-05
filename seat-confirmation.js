@@ -245,3 +245,4 @@ console.log('%c🎫 Booking Confirmed!', 'font-size: 20px; font-weight: bold; co
 console.log('%cYour seat has been successfully booked!', 'font-size: 14px; color: #6B5B4E;');
 console.log('💡 Tip: Press Ctrl+P (or Cmd+P on Mac) to print your booking confirmation');
 
+
