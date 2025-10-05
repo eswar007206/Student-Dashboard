@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Lecture Booking Portal</title>
+    <meta name="description" content="Browse and book seats for upcoming lectures at your university">
+    <link rel="stylesheet" href="student-dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-section">
+                <img id="gcu-logo" src="image.png" alt="Logo">
+                <h1 class="header-title">Student Dashboard</h1>
+            </div>
+            <button class="logout-btn" onclick="handleLogout()">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Logout
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-wrapper">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search by course, program, or teacher..."
+                        oninput="handleSearch(this.value)"
+                    >
+                </div>
+            </div>
+
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Lectures</h2>
+                <p class="section-subtitle">Book your seat for the lectures below</p>
+            </div>
+
+            <!-- Filter Chips -->
+            <div class="filter-chips" id="filterChips">
+                <button class="chip chip-active" data-filter="all" onclick="handleFilter('all')">All Lectures</button>
+                <button class="chip" data-filter="Computer Science" onclick="handleFilter('Computer Science')">Computer Science</button>
+                <button class="chip" data-filter="Artificial Intelligence" onclick="handleFilter('Artificial Intelligence')">AI</button>
+                <button class="chip" data-filter="Information Technology" onclick="handleFilter('Information Technology')">IT</button>
+            </div>
+
+            <!-- Lectures Grid -->
+            <div class="lectures-grid" id="lecturesGrid">
+                <!-- Lecture cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <h3 class="empty-title">No lectures available right now</h3>
+                <p class="empty-text">Check back later or adjust your search filters</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img id="gcu-logo" src="image.png" alt="Logo">
+                <span class="footer-brand-text">Student Lecture Portal</span>
+            </div>
+            <div class="footer-info">
+                <p class="footer-text">© 2025 Garden City University.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="student-dashboard.js"></script>
+</body>
+</html>

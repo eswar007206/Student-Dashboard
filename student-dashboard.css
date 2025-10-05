@@ -1,0 +1,565 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-bg: #F9F3EF;
+    --body-bg: #D2C1B6;
+    --footer-bg: #1B3C53;
+    --card-bg: #FFFFFF;
+    --text-primary: #1B3C53;
+    --text-secondary: #6B5B4E;
+    --text-light: #8C7B6E;
+    --accent: #1B3C53;
+    --accent-light: #2D5570;
+    --border: #E8DED4;
+    --shadow: rgba(27, 60, 83, 0.08);
+    --shadow-hover: rgba(27, 60, 83, 0.15);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+/* Header */
+.header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 12px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+#gcu-logo {
+    width: 2rem;
+    height: 2rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.header-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logout-btn:hover {
+    background-color: var(--accent);
+    color: var(--header-bg);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(27, 60, 83, 0.2);
+}
+
+.logout-btn:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 3rem 0;
+}
+
+/* Search Section */
+.search-section {
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.125rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.375rem;
+    height: 1.375rem;
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1.125rem 1.125rem 1.125rem 3.25rem;
+    font-size: 1.0625rem;
+    border: 2px solid var(--border);
+    border-radius: 1rem;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px var(--shadow-hover), 0 0 0 3px rgba(27, 60, 83, 0.1);
+    transform: translateY(-1px);
+}
+
+.search-input::placeholder {
+    color: var(--text-light);
+}
+
+/* Section Header */
+.section-header {
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* Filter Chips */
+.filter-chips {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.chip {
+    padding: 0.625rem 1.375rem;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 2rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.chip-active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* Lectures Grid */
+.lectures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.75rem;
+    animation: fadeInUp 0.5s ease-out 0.3s both;
+}
+
+/* Lecture Card */
+.lecture-card {
+    background-color: var(--card-bg);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 16px var(--shadow);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--border);
+    animation: fadeInScale 0.5s ease-out both;
+}
+
+.lecture-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px var(--shadow-hover);
+    border-color: var(--accent);
+}
+
+.card-content {
+    padding: 1.75rem;
+}
+
+.card-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.course-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.625rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.program-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background-color: rgba(27, 60, 83, 0.08);
+    color: var(--accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+}
+
+.detail-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.card-footer {
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--border);
+    margin-bottom: 1.25rem;
+}
+
+.seats-info {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+}
+
+.seats-count {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.0625rem;
+}
+
+.view-seats-btn {
+    width: 100%;
+    padding: 0.9375rem 1.5rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 0.875rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(27, 60, 83, 0.2);
+}
+
+.view-seats-btn:hover {
+    background-color: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(27, 60, 83, 0.3);
+}
+
+.view-seats-btn:active {
+    transform: translateY(0);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.empty-icon {
+    width: 5rem;
+    height: 5rem;
+    color: var(--text-light);
+    margin: 0 auto 1.5rem;
+}
+
+.empty-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.empty-text {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--footer-bg);
+    color: white;
+    padding: 2.5rem 0;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.footer-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: white;
+}
+
+.footer-brand-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.footer-text {
+    font-size: 0.9375rem;
+    opacity: 0.85;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .lectures-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 1.375rem;
+    }
+    
+    .logout-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .lectures-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
+    .search-input {
+        font-size: 1rem;
+        padding: 1rem 1rem 1rem 3rem;
+    }
+    
+    .filter-chips {
+        gap: 0.625rem;
+    }
+    
+    .chip {
+        padding: 0.5rem 1.125rem;
+        font-size: 0.875rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .header-content {
+        padding: 1rem;
+    }
+    
+    .header-title {
+        font-size: 1.125rem;
+    }
+    
+    .logo-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    
+    .logout-btn span {
+        display: none;
+    }
+    
+    .logout-btn {
+        padding: 0.625rem;
+        min-width: auto;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .course-title {
+        font-size: 1.25rem;
+    }
+    
+    .card-content {
+        padding: 1.375rem;
+    }
+    
+    .main-content {
+        padding: 2rem 0;
+    }
+    
+    .search-section {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .search-section,
+    .filter-chips,
+    .footer,
+    .view-seats-btn,
+    .logout-btn {
+        display: none;
+    }
+    
+    .lecture-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
