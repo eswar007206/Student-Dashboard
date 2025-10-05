@@ -234,7 +234,7 @@ function applyFilters() {
 // Handle view seats button click
 function handleViewSeats(lectureId, courseTitle) {
     // Redirect to seat selection page with lecture ID
-    window.location.href = `/seat-selection.html?lectureId=${lectureId}`;
+    window.location.href = 'seat-selection.html?lectureId=' + lectureId;
 }
 
 // Handle logout
@@ -301,5 +301,6 @@ window.addEventListener('load', function() {
 console.log('%c🎓 Student Dashboard', 'font-size: 20px; font-weight: bold; color: #1B3C53;');
 console.log('%cWelcome to the Student Lecture Booking Portal!', 'font-size: 14px; color: #6B5B4E;');
 console.log('💡 Tip: Press "/" to quickly focus the search bar');
+
 
 
