@@ -185,7 +185,7 @@ function showDownloadFeedback() {
 
 // Go back to dashboard
 function goToDashboard() {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
 }
 
 // Add print functionality
@@ -244,3 +244,4 @@ setTimeout(addConfetti, 500);
 console.log('%c🎫 Booking Confirmed!', 'font-size: 20px; font-weight: bold; color: #10B981;');
 console.log('%cYour seat has been successfully booked!', 'font-size: 14px; color: #6B5B4E;');
 console.log('💡 Tip: Press Ctrl+P (or Cmd+P on Mac) to print your booking confirmation');
+
