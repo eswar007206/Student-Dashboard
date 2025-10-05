@@ -298,12 +298,12 @@ function confirmBooking() {
 
 // Close modal and go back to dashboard
 function closeModal() {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
 }
 
 // Go back to dashboard
 function goBack() {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
 }
 
 // Handle logout
@@ -332,3 +332,4 @@ document.addEventListener('keydown', function(e) {
 console.log('%c🎟️ Seat Selection Page', 'font-size: 20px; font-weight: bold; color: #1B3C53;');
 console.log('%cSelect your preferred seat for the lecture!', 'font-size: 14px; color: #6B5B4E;');
 console.log('💡 Tip: Press "Escape" to cancel selection, "Enter" to confirm');
+
