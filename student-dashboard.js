@@ -6,8 +6,8 @@ const mockLectures = [
         program: "Engineering",
         date: "2025-10-10",
         time: "10:00 AM",
-        roomNo: "BHM BLOCK-333",
-        teacher: "Dr. Buddesab",
+        roomNo: "BHM-333",
+        teacher: "Dr. Gireesha",
         course: "Robotics",
         availableSeats: 45
     },
@@ -17,20 +17,20 @@ const mockLectures = [
         program: "Engineering",
         date: "2025-10-11",
         time: "2:00 PM",
-        roomNo: "CS-203",
-        teacher: "Prof. Siva Gopal",
-        course: "Computer Science",
+        roomNo: "BHM-332",
+        teacher: "Prof. Shoba",
+        course: "Information Technology",
         availableSeats: 30
     },
     {
         id: 3,
-        courseTitle: "Machine Learning Fundamentals",
-        program: "Engineering",
+        courseTitle: "Biotechnology Basics",
+        program: "Life Sciences",
         date: "2025-10-12",
         time: "11:30 AM",
-        roomNo: "AI-105",
-        teacher: "Dr. Indira devi",
-        course: "Information Technology",
+        roomNo: "BHM-222",
+        teacher: "Dr. Swathika",
+        course: "Microbiology",
         availableSeats: 25
     },
     {
@@ -39,20 +39,20 @@ const mockLectures = [
         program: "Engineering",
         date: "2025-10-13",
         time: "9:00 AM",
-        roomNo: "CS-110",
-        teacher: "Prof. Ram",
-        course: "Robotics",
+        roomNo: "BHM-332",
+        teacher: "Prof. Eswar",
+        course: "Computer Science",
         availableSeats: 40
     },
     {
         id: 5,
-        courseTitle: "Database Management Systems",
-        program: "Engineering",
+        courseTitle: "Hotel Management 101",
+        program: "Hotel Management",
         date: "2025-10-14",
         time: "3:00 PM",
-        roomNo: "IT-201",
-        teacher: "Dr. Yeshodamma",
-        course: "Bachelor of Computer Applications",
+        roomNo: "BHM-201",
+        teacher: "Dr. Rachel Green",
+        course: "Hotel Management",
         availableSeats: 35
     },
     {
@@ -61,31 +61,31 @@ const mockLectures = [
         program: "Engineering",
         date: "2025-10-15",
         time: "1:00 PM",
-        roomNo: "CS-305",
-        teacher: "Prof. Gireesha",
-        course: "Master of Computer Applications",
+        roomNo: "BHM-305",
+        teacher: "Prof. Buddesab",
+        course: "Data Science",
         availableSeats: 28
     },
     {
         id: 7,
-        courseTitle: "Neural Networks Deep Dive",
-        program: "Engineering",
+        courseTitle: "Bioinformatics Introduction",
+        program: "Life Sciences",
         date: "2025-10-16",
         time: "10:30 AM",
-        roomNo: "AI-202",
-        teacher: "Dr. Shoba",
-        course: "Bachelor of education",
+        roomNo: "West Block-202",
+        teacher: "Dr. Sarah",
+        course: "Biotechnology",
         availableSeats: 20
     },
     {
         id: 8,
-        courseTitle: "Cybersecurity Principles",
-        program: "Engineering",
+        courseTitle: "Hotel Management Basics",
+        program: "Hotel Management",
         date: "2025-10-17",
         time: "2:30 PM",
-        roomNo: "IT-150",
-        teacher: "Prof. Eswar",
-        course: "Robotics",
+        roomNo: "Crystal Block-150",
+        teacher: "Prof. Robert Brown",
+        course: "Hotel Management",
         availableSeats: 32
     }
 ];
@@ -233,25 +233,8 @@ function applyFilters() {
 
 // Handle view seats button click
 function handleViewSeats(lectureId, courseTitle) {
-    // Create a nice alert message
-    const lecture = allLectures.find(l => l.id === lectureId);
-    
-    if (lecture) {
-        const message = `
-🎓 Seat Selection for:
-📚 ${courseTitle}
-👨‍🏫 ${lecture.teacher}
-📅 ${formatDate(lecture.date)} at ${lecture.time}
-🏫 Room ${lecture.roomNo}
-💺 ${lecture.availableSeats} seats available
-
-This will redirect to the seat selection page.
-        `;
-        alert(message);
-        
-        // In a real application, you would redirect to the seat selection page
-        // window.location.href = `/seat-selection?lectureId=${lectureId}`;
-    }
+    // Redirect to seat selection page with lecture ID
+    window.location.href = `/seat-selection.html?lectureId=${lectureId}`;
 }
 
 // Handle logout
@@ -314,4 +297,7 @@ window.addEventListener('load', function() {
     document.body.classList.add('loaded');
 });
 
-
+// Console welcome message
+console.log('%c🎓 Student Dashboard', 'font-size: 20px; font-weight: bold; color: #1B3C53;');
+console.log('%cWelcome to the Student Lecture Booking Portal!', 'font-size: 14px; color: #6B5B4E;');
+console.log('💡 Tip: Press "/" to quickly focus the search bar');
